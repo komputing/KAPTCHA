@@ -1,10 +1,19 @@
 plugins {
     kotlin("jvm") version "1.6.10"
     java
+    `maven-publish`
 }
 
-group = "org.komputing.kaptcha"
-version = "0.1"
+publishing {
+    publications {
+        create<MavenPublication>("maven") {
+            groupId = "org.gradle.sample"
+            version = "0.1"
+
+            from(components["java"])
+        }
+    }
+}
 
 repositories {
     mavenCentral()
